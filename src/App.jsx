@@ -53,7 +53,7 @@ function App() {
       <StudentForm addStudent={addStudent} />
 
       <StudentList
-        students={students}
+        students={filteredStudents}
         deleteStudent={deleteStudent}
       />
     </div>

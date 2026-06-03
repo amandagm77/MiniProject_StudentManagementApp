@@ -45,6 +45,11 @@ function App() {
     <div className="app">
       <h1>Student Management App</h1>
 
+      <SearchBar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
+
       <StudentForm addStudent={addStudent} />
 
       <StudentList

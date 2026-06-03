@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import StudentForm from "./components/StudentForm";
 import StudentList from "./components/StudentList";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const [students, setStudents] = useState([
@@ -11,6 +12,12 @@ function App() {
       course: "Software Engineering",
     },
   ]);
+
+    const [searchTerm, setSearchTerm] = useState("");
+
+  function addStudent(student) {
+    setStudents([...students, student]);
+  }
 
   function addStudent(student) {
     setStudents([...students, student]);
@@ -23,6 +30,16 @@ function App() {
 
     setStudents(updatedStudents);
   }
+
+  const filteredStudents = students.filter((student) =>
+  student.name
+    .toLowerCase()
+    .includes(searchTerm.toLowerCase()) ||
+
+  student.course
+    .toLowerCase()
+    .includes(searchTerm.toLowerCase())
+);
 
   return (
     <div className="app">

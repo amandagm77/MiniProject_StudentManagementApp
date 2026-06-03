@@ -4,6 +4,7 @@ import StudentForm from "./components/StudentForm";
 import StudentList from "./components/StudentList";
 import SearchBar from "./components/SearchBar";
 import StudentCount from "./components/StudentCount";
+import ClearAllButton from "./components/ClearAllButton";
 
 function App() {
   const [students, setStudents] = useState([
@@ -14,11 +15,7 @@ function App() {
     },
   ]);
 
-    const [searchTerm, setSearchTerm] = useState("");
-
-  function addStudent(student) {
-    setStudents([...students, student]);
-  }
+  const [searchTerm, setSearchTerm] = useState("");
 
   function addStudent(student) {
     setStudents([...students, student]);
@@ -32,15 +29,15 @@ function App() {
     setStudents(updatedStudents);
   }
 
-  const filteredStudents = students.filter((student) =>
-  student.name
-    .toLowerCase()
-    .includes(searchTerm.toLowerCase()) ||
+  function clearStudents() {
+    setStudents([]);
+  }
 
-  student.course
-    .toLowerCase()
-    .includes(searchTerm.toLowerCase())
-);
+  const filteredStudents = students.filter((student) =>
+    student.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="app">
@@ -54,6 +51,8 @@ function App() {
       />
 
       <StudentForm addStudent={addStudent} />
+
+      <ClearAllButton clearStudents={clearStudents} />
 
       <StudentList
         students={filteredStudents}

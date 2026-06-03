@@ -3,6 +3,7 @@ import "./App.css";
 import StudentForm from "./components/StudentForm";
 import StudentList from "./components/StudentList";
 import SearchBar from "./components/SearchBar";
+import StudentCount from "./components/StudentCount";
 
 function App() {
   const [students, setStudents] = useState([
@@ -44,6 +45,8 @@ function App() {
   return (
     <div className="app">
       <h1>Student Management App</h1>
+
+      <StudentCount total={students.length} />
 
       <SearchBar
         searchTerm={searchTerm}
